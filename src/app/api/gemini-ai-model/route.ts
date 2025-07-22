@@ -46,7 +46,7 @@ export async function POST(req: Request): Promise<Response> {
 
     const cleanNames: string = response.text.replace(/```json\n?|\n?```/g, "");
     const names: NameSuggestion[] = JSON.parse(cleanNames.trim());
-    console.log(names);
+
     return NextResponse.json(names);
   } catch (error) {
     console.error("Error calling Gemini API:", error);
