@@ -57,27 +57,23 @@ body {
   padding: 0;
 }
 
-.App {
+.app {
   display: flex;
   flex-direction: column;
-  gap: var(--spacing-4);
+  gap: var(--spacing-6);
   margin: 0 auto;
   max-width: 400px;
   min-height: 100vh;
   padding: var(--spacing-4);
 }
 
-/* Header */
-header {
-  padding-top: var(--spacing-4);
-  text-align: center;
-}
-
-header h1 {
+/* Header Text */
+.header {
   color: var(--color-white);
   font-size: 1.75rem;
   font-weight: 700;
   letter-spacing: -0.025em;
+  text-align: center;
   margin: 0;
 }
 
@@ -163,6 +159,24 @@ header h1 {
   padding: var(--spacing-3) var(--spacing-3);
 }
 
+.form-button:disabled {
+  background: var(--color-gray-600);
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.form-list-title {
+  color: var(--color-gray-300);
+  font-size: 1.2rem;
+  font-weight: 600;
+  letter-spacing: 0.025em;
+}
+
+.form-list {
+  color: var(--color-gray-300);
+  margin: 0;
+}
+
 .form-input:focus {
   background: var(--color-gray-600);
   border-color: var(--color-blue-500);
@@ -180,6 +194,10 @@ header h1 {
 
 .flex {
   display: flex;
+}
+
+.gap-3 {
+  gap: var(--spacing-3);
 }
 
 .flex-col {
@@ -200,4 +218,35 @@ header h1 {
 
 .text-center {
   text-align: center;
+}
+
+/* Spinner Animation */
+.spinner {
+  width: 24px;
+  height: 24px;
+  margin: 0 auto;
+  display: none;
+}
+
+.spinner.is-loading {
+  display: block;
+}
+
+.spinner .path {
+  stroke: var(--color-blue-500);
+  stroke-linecap: round;
+  animation: dash 1.5s ease-in-out infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin {
+  animation: spin 1s linear infinite;
 }
