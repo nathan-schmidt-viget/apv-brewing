@@ -18,28 +18,31 @@ export default function Names({
   return (
     <Suspense fallback={<div>Loading...</div>}>
       {isLoading ? (
-        <div className='form-group'>
-          <svg
-            className={`spinner ${isLoading ? "is-loading" : ""}`}
-            viewBox='0 0 50 50'
-          >
+        <div className='flex flex-col gap-1'>
+          <svg className='w-6 h-6 mx-auto animate-spin' viewBox='0 0 50 50'>
             <circle
-              className='path'
+              className='stroke-blue-500 stroke-2 fill-none'
               cx='25'
               cy='25'
               r='20'
-              fill='none'
-              strokeWidth='5'
-            ></circle>
+              strokeLinecap='round'
+            />
           </svg>
         </div>
       ) : (
         names.length > 0 && (
-          <div className='form-group'>
-            <h3 className='form-list-title'>Suggested Names</h3>
-            <ul className='form-list'>
+          <div className='flex flex-col gap-1'>
+            <h3 className='text-gray-300 text-xl font-semibold tracking-wide'>
+              Suggested Names
+            </h3>
+            <ul className='text-gray-300 m-0 list-none'>
               {names.map((name: NameSuggestion, index: number) => (
-                <li key={index}>{name.name}</li>
+                <li
+                  key={index}
+                  className='py-1 px-2 bg-gray-700 rounded-lg mb-2 last:mb-0'
+                >
+                  {name.name}
+                </li>
               ))}
             </ul>
           </div>

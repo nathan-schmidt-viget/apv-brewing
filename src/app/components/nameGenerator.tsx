@@ -62,15 +62,20 @@ export default function NameGenerator(
   };
 
   return (
-    <section className='flex-col flex gap-3'>
-      <h2 className='header'>Generate a Name</h2>
-      <div className='form'>
-        <div className='form-group'>
-          <label className='form-label' htmlFor='alcohol-type'>
+    <section className='flex flex-col gap-3'>
+      <h2 className='text-white text-3xl font-bold tracking-tight text-center m-0'>
+        Generate a Name
+      </h2>
+      <div className='flex flex-col gap-4 bg-gray-800 rounded-2xl border border-gray-700 p-4'>
+        <div className='flex flex-col gap-1'>
+          <label
+            className='text-gray-300 text-sm font-semibold tracking-wide'
+            htmlFor='alcohol-type'
+          >
             What type of alcohol are you making?
           </label>
           <select
-            className='form-input'
+            className='bg-gray-700 rounded-xl border border-gray-600 text-white text-lg font-semibold py-2 px-3 text-center transition-all duration-200 w-full focus:bg-gray-600 focus:border-blue-500 focus:outline-none'
             id='alcohol-type'
             value={alcoholType}
             onChange={handleAlcoholTypeChange}
@@ -82,28 +87,32 @@ export default function NameGenerator(
             ))}
           </select>
         </div>
-        <div className='form-group'>
-          <label className='form-label' htmlFor='alcohol-description'>
+        <div className='flex flex-col gap-1'>
+          <label
+            className='text-gray-300 text-sm font-semibold tracking-wide'
+            htmlFor='alcohol-description'
+          >
             What did you use to make it? (optional)
           </label>
           <textarea
-            className='form-textarea'
+            className='bg-gray-700 rounded-xl border border-gray-600 text-white py-2 px-3 text-lg font-semibold resize-none'
             id='alcohol-description'
             value={alcoholDescription}
             onChange={handleDescriptionChange}
             placeholder='Describe your ingredients, process, or inspiration...'
+            rows={3}
           />
         </div>
-        <div className='form-group'>
+        <div className='flex flex-col gap-1'>
           <button
-            className='form-button'
+            className='bg-blue-500 rounded-xl border-none text-white text-lg font-semibold py-3 px-3 disabled:bg-gray-600 disabled:opacity-50 disabled:cursor-not-allowed'
             disabled={isLoading}
             onClick={handleGenerateNames}
           >
             {isLoading ? "Generating..." : "Generate a Name"}
           </button>
         </div>
-        <Names names={alcoholNames} isLoading={isLoading} />
+        {/* <Names names={alcoholNames} isLoading={isLoading} /> */}
       </div>
     </section>
   );

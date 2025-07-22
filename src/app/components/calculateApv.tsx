@@ -38,16 +38,21 @@ export default function CalculateApv(): React.JSX.Element {
   };
 
   return (
-    <section className='flex-col flex gap-3'>
-      <h1 className='header'>ABV Calculator</h1>
-      <div className='form'>
-        <div className='form-group'>
-          <label className='form-label' htmlFor='starting-gravity'>
+    <section className='flex flex-col gap-3'>
+      <h1 className='text-white text-3xl font-bold tracking-tight text-center m-0'>
+        ABV Calculator
+      </h1>
+      <div className='flex flex-col gap-4 bg-gray-800 rounded-2xl border border-gray-700 p-4'>
+        <div className='flex flex-col gap-1'>
+          <label
+            className='text-gray-300 text-sm font-semibold tracking-wide'
+            htmlFor='starting-gravity'
+          >
             Original Gravity (OG)
           </label>
           <input
             type='number'
-            className='form-input'
+            className='bg-gray-700 rounded-xl border border-gray-600 text-white text-lg font-semibold py-2 px-3 text-center transition-all duration-200 w-full focus:bg-gray-600 focus:border-blue-500 focus:outline-none placeholder:text-gray-400'
             id='starting-gravity'
             value={startingGravity}
             min={1.01}
@@ -56,13 +61,16 @@ export default function CalculateApv(): React.JSX.Element {
           />
         </div>
 
-        <div className='form-group'>
-          <label className='form-label' htmlFor='final-gravity'>
+        <div className='flex flex-col gap-1'>
+          <label
+            className='text-gray-300 text-sm font-semibold tracking-wide'
+            htmlFor='final-gravity'
+          >
             Final Gravity (FG)
           </label>
           <input
             type='number'
-            className='form-input'
+            className='bg-gray-700 rounded-xl border border-gray-600 text-white text-lg font-semibold py-2 px-3 text-center transition-all duration-200 w-full focus:bg-gray-600 focus:border-blue-500 focus:outline-none placeholder:text-gray-400'
             id='final-gravity'
             value={finalGravity}
             min={1.0}
@@ -72,9 +80,13 @@ export default function CalculateApv(): React.JSX.Element {
         </div>
       </div>
 
-      <div className='calculator-display'>
-        <div className='result-label'>Alcohol By Volume</div>
-        <div className='result-value'>{abv}%</div>
+      <div className='text-center bg-gray-800 rounded-2xl border border-gray-700 p-5'>
+        <div className='text-gray-400 text-sm font-medium mb-1'>
+          Alcohol By Volume
+        </div>
+        <div className='text-green-500 text-4xl font-bold tracking-tight m-0'>
+          {abv}%
+        </div>
       </div>
     </section>
   );
