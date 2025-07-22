@@ -115,7 +115,7 @@ export default function NameGenerator(
             What did you use to make it?
           </label>
           <textarea
-            className='bg-gray-700 rounded-xl border border-gray-600 text-white py-2 px-3 text-sm font-semibold resize-none'
+            className='bg-gray-700 rounded-xl border border-gray-600 text-white py-2 px-3 text-md font-semibold resize-none'
             id='alcohol-description'
             value={alcoholDescription}
             onChange={handleDescriptionChange}
