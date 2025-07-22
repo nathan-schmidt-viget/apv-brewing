@@ -6,22 +6,17 @@ A modern, mobile-first web application for calculating Alcohol By Volume (ABV) p
 
 - **ABV Calculator**: Calculate alcohol content using Original Gravity (OG) and Final Gravity (FG)
 - **AI Name Generator**: Generate creative names for your beverages using Google's Gemini AI
-- **Mobile-First Design**: Optimized for mobile devices with a native app feel
 - **Real-time Calculations**: Instant ABV percentage updates as you input values
 - **Multiple Beverage Types**: Support for beer, wine, cider, mead, and other beverages
 
 ## 🛠 Tech Stack
 
-- **Framework**: Next.js 15.4.2 (App Router)
+- **Framework**: Next.js
 - **Language**: TypeScript
 - **Styling**: Tailwind CSS
 - **AI Integration**: Google Gemini AI API
 - **Deployment**: Vercel-ready
 - **Package Manager**: npm
-
-## 📱 Screenshots
-
-_Screenshots coming soon_
 
 ## 🚀 Getting Started
 
@@ -71,50 +66,6 @@ _Screenshots coming soon_
    Navigate to [http://localhost:3000](http://localhost:3000)
 
 ## 📖 How to Use
-
-### ABV Calculator
-
-1. **Enter Original Gravity (OG)**: The specific gravity before fermentation
-
-   - Typical range: 1.010 - 1.200
-   - Example: 1.050 for a standard beer
-
-2. **Enter Final Gravity (FG)**: The specific gravity after fermentation
-
-   - Typical range: 0.990 - 1.050
-   - Example: 1.010 for a finished beer
-
-3. **View Results**: The ABV percentage is calculated automatically using the formula:
-   ```
-   ABV = (OG - FG) × 131.25
-   ```
-
-### AI Name Generator
-
-1. **Select Beverage Type**: Choose from beer, wine, cider, mead, or other
-2. **Add Description** (optional): Describe your ingredients, process, or inspiration
-3. **Generate Names**: Click the button to get AI-generated name suggestions
-4. **View Results**: Three creative names will be displayed
-
-## 🏗 Project Structure
-
-```
-src/
-├── app/
-│   ├── api/
-│   │   └── gemini-ai-model/
-│   │       └── route.ts          # Gemini AI API endpoint
-│   ├── components/
-│   │   ├── ai/
-│   │   │   └── names.tsx         # Names display component
-│   │   ├── calculateApv.tsx      # ABV calculator component
-│   │   └── nameGenerator.tsx     # AI name generator component
-│   ├── globals.css               # Global styles
-│   ├── layout.tsx                # Root layout
-│   └── page.tsx                  # Main page
-├── package.json
-└── README.md
-```
 
 ## 🔧 Available Scripts
 
