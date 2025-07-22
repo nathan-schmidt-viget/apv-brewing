@@ -5,6 +5,8 @@ function App() {
   const [startingGravity, setStartingGravity] = useState(1.05);
   const [finalGravity, setFinalGravity] = useState(1.01);
   const [abv, setAbv] = useState(0);
+  const [alcoholType, setAlcoholType] = useState('beer');
+  const [alcoholDescription, setAlcoholDescription] = useState('');
 
   useEffect(() => {
     setAbv(
@@ -60,6 +62,51 @@ function App() {
           {abv}%
         </div>
       </div>
+
+      <section className="form">
+        <div className="form-group">
+          <label
+            className="form-label"
+            htmlFor="alcohol-type"
+          >
+            What type of alcohol are you making?
+          </label>
+          <select
+            className="form-input"
+            id="alcohol-type"
+            value={alcoholType}
+            onChange={(e) => setAlcoholType(e.target.value)}
+          >
+            <option value="beer">Beer</option>
+            <option value="wine">Wine</option>
+            <option value="cider">Cider</option>
+            <option value="mead">Mead</option>
+            <option value="other">Other</option>
+          </select>
+        </div>
+        <div className="form-group">
+          <label
+            className="form-label"
+            htmlFor="alcohol-description"
+          >
+            What did you use to make it? (optional)
+          </label>
+          <textarea
+            className="form-textarea"
+            id="alcohol-name"
+            value={alcoholDescription}
+            onChange={(e) => setAlcoholDescription(e.target.value)}
+          ></textarea>
+        </div>
+        <div className="form-group">
+          <button className="form-button">
+            Find a Name
+          </button>
+        </div>
+        <div>
+          {/* TODO: Add a list of names */}
+        </div>
+      </section>
     </div>
   );
 }
