@@ -56,7 +56,6 @@ export default function CalculateApv(): React.JSX.Element {
             id='starting-gravity'
             value={startingGravity}
             min={1.01}
-            step={0.001}
             onChange={handleStartingGravityChange}
           />
         </div>
@@ -74,7 +73,6 @@ export default function CalculateApv(): React.JSX.Element {
             id='final-gravity'
             value={finalGravity}
             min={1.0}
-            step={0.001}
             onChange={handleFinalGravityChange}
           />
         </div>

@@ -31,15 +31,15 @@ export default function Names({
         </div>
       ) : (
         names.length > 0 && (
-          <div className='flex flex-col gap-1'>
-            <h3 className='text-gray-300 text-xl font-semibold tracking-wide'>
+          <div className='flex flex-col gap-4 mt-6'>
+            <h3 className='text-gray-300 text-xl text-center font-semibold tracking-wide'>
               Suggested Names
             </h3>
-            <ul className='text-gray-300 m-0 list-none'>
+            <ul className='text-gray-300 flex flex-col gap-2 list-none'>
               {names.map((name: NameSuggestion, index: number) => (
                 <li
                   key={index}
-                  className='py-1 px-2 bg-gray-700 rounded-lg mb-2 last:mb-0'
+                  className='p-2 bg-gray-700 text-center rounded-lg'
                 >
                   {name.name}
                 </li>
