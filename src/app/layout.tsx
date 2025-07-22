@@ -14,6 +14,7 @@ const geistMono = Geist_Mono({
 
 export const metadata: Metadata = {
   title: "APV Calculator - Alcohol By Volume",
+
   description:
     "Calculate Alcohol By Volume (ABV) for brewing with precision. Simple, accurate gravity-based calculations with AI-powered name generation for your craft beverages.",
   keywords:
@@ -53,9 +54,16 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
-  verification: {
-    google: "your-google-verification-code",
+  viewport: {
+    width: "device-width",
+    initialScale: 1,
+    maximumScale: 1,
+    userScalable: false,
+    viewportFit: "cover",
   },
+  // verification: {
+  //   google: "your-google-verification-code",
+  // },
 };
 
 export default function RootLayout({

@@ -82,7 +82,7 @@ export default function CalculateApv(): React.JSX.Element {
         <div className='text-gray-400 text-sm font-medium mb-1'>
           Alcohol By Volume
         </div>
-        <div className='text-green-500 text-4xl font-bold tracking-tight m-0'>
+        <div className='text-green-500 text-4xl font-bold tracking-tight'>
           {abv}%
         </div>
       </div>

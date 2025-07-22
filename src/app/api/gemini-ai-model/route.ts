@@ -32,7 +32,7 @@ export async function POST(req: Request): Promise<Response> {
 
   try {
     const response: GeminiResponse = await ai.models.generateContent({
-      model: "gemini-2.5-flash",
+      model: "gemini-2.5-flash-lite",
       contents: data.text,
     });
 

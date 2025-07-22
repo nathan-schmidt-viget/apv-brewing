@@ -1,6 +1,6 @@
 # APV Calculator - Alcohol By Volume Calculator
 
-A modern, mobile-first web application for calculating Alcohol By Volume (ABV) percentages for homebrewing and craft beverage production. Features an AI-powered name generator for your creations.
+A modern, mobile-first web application for calculating Alcohol By Volume (ABV) percentages for homebrewing and craft beverage production. Features an AI-powered name generator for your creations. View the [preview](https://apv-calculator.vercel.app/) of the app.
 
 ## 🍺 Features
 
@@ -83,41 +83,9 @@ A modern, mobile-first web application for calculating Alcohol By Volume (ABV) p
 3. Add environment variables in Vercel dashboard
 4. Deploy automatically
 
-### Other Platforms
-
-The app can be deployed to any platform that supports Next.js:
-
-- Netlify
-- Railway
-- DigitalOcean App Platform
-- AWS Amplify
-
-## 🤝 Contributing
-
-1. Fork the repository
-2. Create a feature branch (`git checkout -b feature/amazing-feature`)
-3. Commit your changes (`git commit -m 'Add amazing feature'`)
-4. Push to the branch (`git push origin feature/amazing-feature`)
-5. Open a Pull Request
-
 ## 📝 License
 
 This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
-
-## 🙏 Acknowledgments
-
-- Google Gemini AI for the name generation feature
-- Next.js team for the amazing framework
-- Tailwind CSS for the utility-first styling
-- The homebrewing community for inspiration
-
-## 📞 Support
-
-If you encounter any issues or have questions:
-
-1. Check the [Issues](https://github.com/yourusername/apv-brewing/issues) page
-2. Create a new issue with detailed information
-3. Include your browser, OS, and steps to reproduce
 
 ---
 

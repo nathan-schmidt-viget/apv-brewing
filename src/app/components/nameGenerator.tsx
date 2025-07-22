@@ -56,7 +56,8 @@ export default function NameGenerator(
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
           text: `I am making ${alcoholType} with the following description: ${alcoholDescription}.
-        Please generate a name for it. List only three names in a json format that matches [{name: ''}]`,
+        Generate a name for the ${alcoholType}, based on the description. List only three names: one classic, one trendy, and one random. 
+        Render the names in a json format that matches [{name: ''}]`,
         }),
       });
 
@@ -128,7 +129,7 @@ export default function NameGenerator(
             disabled={isLoading}
             onClick={handleGenerateNames}
           >
-            {isLoading ? "Generating..." : "Generate a Name"}
+            {isLoading ? "Generating..." : "Generate Names"}
           </button>
         </div>
         <Names names={alcoholNames} isLoading={isLoading} />
