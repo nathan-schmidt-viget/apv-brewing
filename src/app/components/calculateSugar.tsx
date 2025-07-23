@@ -40,6 +40,7 @@ const sweetnessLevels = [
 export default function CalculateSugar() {
   const [batchVolume, setBatchVolume] = useState(5); // gallons
   const [targetABV, setTargetABV] = useState(10); // percentage
+  const [yeastABV, setYeastABV] = useState(14); // yeast alcohol tolerance
   const [sweetness, setSweetness] = useState(1.02); // final gravity
   const [sugarType, setSugarType] = useState<string>("honey");
   const [units, setUnits] = useState<"us" | "metric">("us");
@@ -50,6 +51,10 @@ export default function CalculateSugar() {
 
   const handleTargetABVChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     setTargetABV(parseFloat(e.target.value));
+  };
+
+  const handleYeastABVChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    setYeastABV(parseFloat(e.target.value));
   };
 
   const handleSweetnessChange = (e: React.ChangeEvent<HTMLSelectElement>) => {
@@ -101,6 +106,9 @@ export default function CalculateSugar() {
   const results = calculateSugarAmount();
   const selectedSugar = sugarTypes.find((s) => s.value === sugarType);
   const selectedSweetness = sweetnessLevels.find((s) => s.value === sweetness);
+
+  // Check if target ABV exceeds yeast tolerance
+  const isABVExceeded = targetABV > yeastABV;
 
   return (
     <div className='flex flex-col gap-6 bg-gray-800 rounded-xl p-6 border border-gray-700'>
@@ -177,6 +185,33 @@ export default function CalculateSugar() {
         <div className='text-gray-400 text-xs mt-1'>min: 0% max: 20%</div>
       </label>
 
+      {/* Yeast ABV Tolerance */}
+      <label>
+        <span className='text-gray-300 text-sm font-semibold tracking-wide block mb-2'>
+          Yeast ABV Tolerance
+        </span>
+        <div className='flex items-center gap-2'>
+          <input
+            type='range'
+            min={0}
+            max={20}
+            step={0.5}
+            className='flex-1'
+            value={yeastABV}
+            onChange={handleYeastABVChange}
+          />
+          <span className='text-white font-semibold min-w-[60px] text-right'>
+            {yeastABV}%
+          </span>
+        </div>
+        <div className='text-gray-400 text-xs mt-1'>min: 0% max: 20%</div>
+        {isABVExceeded && (
+          <div className='text-red-400 text-xs mt-1 font-semibold'>
+            ⚠️ Target ABV exceeds yeast tolerance
+          </div>
+        )}
+      </label>
+
       {/* Sweetness Level */}
       <label>
         <span className='text-gray-300 text-sm font-semibold tracking-wide block mb-2'>
@@ -231,6 +266,16 @@ export default function CalculateSugar() {
               {((results.targetOG - 1.0) * 260).toFixed(1)}
             </span>
           </div>
+          <div className='flex justify-between'>
+            <span>Yeast Tolerance:</span>
+            <span
+              className={`font-semibold ${
+                isABVExceeded ? "text-red-400" : "text-green-400"
+              }`}
+            >
+              {yeastABV}%
+            </span>
+          </div>
         </div>
 
         <h3 className='text-white font-bold text-lg mt-4 mb-3'>
@@ -246,23 +291,6 @@ export default function CalculateSugar() {
             </span>
           </div>
         </div>
-      </div>
-
-      {/* Instructions */}
-      <div className='bg-gray-700 rounded-xl p-4 border border-gray-600'>
-        <h3 className='text-white font-bold text-lg mb-3'>Instructions</h3>
-        <ol className='text-gray-300 text-sm space-y-2 list-decimal list-inside'>
-          <li>Clean and sanitize all equipment that will contact your must.</li>
-          <li>
-            Dissolve {selectedSugar?.name.toLowerCase()} in a small amount of
-            water.
-          </li>
-          <li>Add water to reach your target batch volume.</li>
-          <li>Aerate the must vigorously for 15 minutes.</li>
-          <li>Pitch your yeast and apply airlock.</li>
-          <li>Record specific gravity and temperature for reference.</li>
-          <li>Ferment according to your yeast's temperature specifications.</li>
-        </ol>
       </div>
     </div>
   );
