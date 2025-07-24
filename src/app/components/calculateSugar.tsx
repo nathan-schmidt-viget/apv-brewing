@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 
 const sugarTypes = [
   {
@@ -69,16 +69,16 @@ export default function CalculateSugar() {
     setUnits(e.target.value as "us" | "metric");
   };
 
-  // Calculate target original gravity based on target ABV and final gravity
+  // Calculate target original gravity based on yeast ABV tolerance and final gravity
   const calculateTargetOG = (abv: number, fg: number) => {
-    // Using the formula: ABV = (OG - FG) * 131.25
+    // Using the standard formula: ABV = (OG - FG) * 131.25
     // Rearranged: OG = (ABV / 131.25) + FG
     return abv / 131.25 + fg;
   };
 
   // Calculate required sugar amount
   const calculateSugarAmount = () => {
-    const targetOG = calculateTargetOG(targetABV, sweetness);
+    const targetOG = calculateTargetOG(yeastABV, sweetness);
     const sugar = sugarTypes.find((s) => s.value === sugarType);
 
     if (!sugar) return { pounds: 0, grams: 0, targetOG: 0 };
@@ -88,9 +88,11 @@ export default function CalculateSugar() {
       units === "us" ? batchVolume * 3.78541 : batchVolume;
 
     // Calculate sugar needed in grams
-    // Formula: Sugar (g) = (Target OG - 1.000) * Batch Volume (L) * 1000 / Sugar Content (%)
+    // Standard brewing formula: Sugar (g) = (Target OG - 1.000) * Batch Volume (L) * 1000 / 0.96
+    // Then adjust for sugar content percentage
     const sugarGrams =
       ((targetOG - 1.0) * batchVolumeLiters * 1000) /
+      0.96 /
       (sugar.sugarContent / 100);
 
     // Convert to pounds for US units
@@ -107,8 +109,8 @@ export default function CalculateSugar() {
   const selectedSugar = sugarTypes.find((s) => s.value === sugarType);
   const selectedSweetness = sweetnessLevels.find((s) => s.value === sweetness);
 
-  // Check if target ABV exceeds yeast tolerance
-  const isABVExceeded = targetABV > yeastABV;
+  // Since we're using yeast tolerance as the target, this is always false
+  const isABVExceeded = false;
 
   return (
     <div className='flex flex-col gap-6 bg-gray-800 rounded-xl p-6 border border-gray-700'>
@@ -117,7 +119,8 @@ export default function CalculateSugar() {
           Sugar Calculator
         </h1>
         <p className='text-gray-400 text-sm'>
-          Calculate the exact amount of sugar needed for your batch
+          Calculate the exact amount of sugar needed to reach maximum potential
+          alcohol
         </p>
       </div>
 
@@ -161,28 +164,6 @@ export default function CalculateSugar() {
           min: {units === "us" ? "1 gal" : "4 L"} max:{" "}
           {units === "us" ? "20 gal" : "75 L"}
         </div>
-      </label>
-
-      {/* Target ABV */}
-      <label>
-        <span className='text-gray-300 text-sm font-semibold tracking-wide block mb-2'>
-          Target ABV
-        </span>
-        <div className='flex items-center gap-2'>
-          <input
-            type='range'
-            min={0}
-            max={20}
-            step={0.5}
-            className='flex-1'
-            value={targetABV}
-            onChange={handleTargetABVChange}
-          />
-          <span className='text-white font-semibold min-w-[60px] text-right'>
-            {targetABV}%
-          </span>
-        </div>
-        <div className='text-gray-400 text-xs mt-1'>min: 0% max: 20%</div>
       </label>
 
       {/* Yeast ABV Tolerance */}
@@ -267,14 +248,8 @@ export default function CalculateSugar() {
             </span>
           </div>
           <div className='flex justify-between'>
-            <span>Yeast Tolerance:</span>
-            <span
-              className={`font-semibold ${
-                isABVExceeded ? "text-red-400" : "text-green-400"
-              }`}
-            >
-              {yeastABV}%
-            </span>
+            <span>Max Potential ABV:</span>
+            <span className='font-semibold text-green-400'>{yeastABV}%</span>
           </div>
         </div>
 
