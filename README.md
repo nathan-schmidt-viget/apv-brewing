@@ -46,7 +46,7 @@ A modern, mobile-first web application for calculating Alcohol By Volume (ABV) p
 
    ```env
    NEXT_PUBLIC_BASE_URL=http://localhost:3000
-   NEXT_PUBLIC_GEMINI_API_KEY=your_gemini_api_key_here
+   GEMINI_API_KEY=your_gemini_api_key_here
    ```
 
 4. **Get a Gemini API Key**

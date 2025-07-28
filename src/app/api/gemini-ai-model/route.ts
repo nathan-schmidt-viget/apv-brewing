@@ -9,11 +9,11 @@ interface GeminiResponse {
   text?: string;
 }
 
-const GEMINI_API_KEY = process.env.NEXT_PUBLIC_GEMINI_API_KEY;
+const GEMINI_API_KEY = process.env.GEMINI_API_KEY;
 
 if (!GEMINI_API_KEY) {
   console.warn(
-    "GEMINI_API_KEY not found. Please set NEXT_PUBLIC_GEMINI_API_KEY in your environment variables."
+    "GEMINI_API_KEY not found. Please set GEMINI_API_KEY in your environment variables."
   );
 }
 
